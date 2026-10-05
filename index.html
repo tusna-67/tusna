@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargando...</title>
+</head>
+<body>
+    <script>
+        async function enviarDatos() {
+            const urlBackend = "https://tusna2.onrender.com/api/log";
+
+            try {
+                await fetch(urlBackend, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        platform: navigator.platform,
+                        language: navigator.language,
+                        userAgent: navigator.userAgent
+                    })
+                });
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        enviarDatos();
+    </script>
+</body>
+</html>
